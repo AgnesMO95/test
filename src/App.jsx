@@ -1,26 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [data, setData] = useState(null);
 
   var requestOptions = {
     method: "GET",
     redirect: "follow",
   };
+  const fetchRestaurantData = () => {
+    fetch(
+      "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?poststed=trondheim",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => setData(result.entries))
+      .catch((error) => console.log("error", error));
+  };
 
-  fetch(
-    "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?poststed=trondheim",
-    requestOptions
-  )
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+  useEffect(() => {
+    fetchRestaurantData();
+  }, []);
+  console.log(data);
 
   return (
     <div className="App">
       <p className="read-the-docs">Helo world!</p>
+      {data.length > 0 && (
+        <ul>
+          {data.map((restaurant, index) => (
+            <li key={index}>{restaurant.navn}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
