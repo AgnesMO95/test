@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   var requestOptions = {
     method: "GET",
