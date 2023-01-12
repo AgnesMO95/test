@@ -29,9 +29,13 @@ function App() {
       <p className="read-the-docs">Helo world!</p>
       {data.length > 0 && (
         <ul>
-          {data.map((restaurant, index) => (
-            <li key={index}>{restaurant.navn}</li>
-          ))}
+          {data
+            .sort((a, b) => a.total_karakter - b.total_karakter)
+            .map((restaurant, index) => (
+              <li key={index}>
+                {restaurant.navn} karakter: {restaurant.total_karakter}
+              </li>
+            ))}
         </ul>
       )}
     </div>
