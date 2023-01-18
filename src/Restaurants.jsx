@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import Restaurant from "./Restaurant";
 
 function Restaurants() {
   const [data, setData] = useState([]);
@@ -28,21 +29,15 @@ function Restaurants() {
     <div className="restaurants">
       <h1> Restauranter i Trondheim </h1>
       <div className="retaurants-wrapper">
-        <div className="restaurant-grid-restaurants-wrapper">
-          {data.length > 0 && (
-            <div>
-              {data
-                .sort((a, b) => a.total_karakter - b.total_karakter)
-                .map((restaurant, index) => (
-                  <div className="restaurant">
-                    <p key={index}>
-                      {restaurant.navn} karakter: {restaurant.total_karakter}
-                    </p>
-                  </div>
-                ))}
-            </div>
-          )}
-        </div>
+        {data.length > 0 && (
+          <>
+            {data
+              .sort((a, b) => a.total_karakter - b.total_karakter)
+              .map((restaurant, index) => (
+                <Restaurant key={index} restaurant={restaurant}></Restaurant>
+              ))}
+          </>
+        )}
       </div>
     </div>
   );
