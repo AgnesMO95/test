@@ -16,6 +16,7 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 - Kjør
 
   npm: `npm create vite@latest restaurantraitings -- --template react`
+
   yarn: `yarn create vite restaurantraitings --template react`
 
 - Kjør opp appen med:
@@ -24,11 +25,13 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
   - installer dependencies
 
     npm: `npm install`
+
     yarn: `yarn`
 
   - kjør appen i dev miljø og åpne localhost linken
 
     npm: `npm run dev`
+
     yarn: `yarn dev`
 
   - Slett innholdet i App.jsx og skriv en enkel hello world
@@ -75,23 +78,26 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
 - I package.json legg til:
 
-  øverst i filen: `"homepage": "http://<ditt-github-navn>.github.io/<repo>"` => vil være Url'en til nettsiden
+  øverst i filen: => vil være Url'en til nettsiden
+
+  ```json
+    "homepage": "http://<ditt-github-navn>.github.io/<repo>"
+  ```
 
   I script taggen under "dev":
 
-  ```javascript
+  ```json
       "predeploy": "npm run build",
       "deploy": "gh-pages -d dist",
   ```
 
 - Legg til endringer, commit og push
 
-```
+  ```
     git add .
     git commit -m "setup gh-pages"
     git push
-
-```
+  ```
 
 - Gå til github, man kan nå se gh-pages som en egen branch
 
@@ -123,11 +129,3 @@ Filtrer ut restauranter kun med rating 0
 ### Oppgave 7 - Legg til mer styling
 
 Forslag ...
-
-```
-
-```
-
-```
-
-```
