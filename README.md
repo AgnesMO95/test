@@ -54,8 +54,10 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
 - Set hovedbranchen til main og push comitten til github
 
-  `git branch -M main`
-  `git push -u origin main`
+````
+  git branch -M main
+  git push -u origin main
+´´´
 
 - Oppdater git og se at koden ligger der
 
@@ -68,29 +70,34 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 - Installer dependencies (-save-dev/-D betyr at det er en development dependency som hjelper til med utviklingen)
 
   npm: `npm install gh-pages --save-dev`
+
   yarn. `yarn add -D gh-pages`
 
 - I package.json legg til:
 
-  øverst i filen: `"homepage": "http://<ditt-github-navn>.github.io/<repo>"`=> vil være Url'en til nettsiden
+  øverst i filen: `"homepage": "http://<ditt-github-navn>.github.io/<repo>"`  => vil være Url'en til nettsiden
 
   I script taggen under "dev":
 
   ```javascript
       "predeploy": "npm run build",
       "deploy": "gh-pages -d dist",
-  ```
+````
 
 - Legg til endringer, commit og push
 
-  `git add .`
-  `git commit -m "setup gh-pages"`
-  `git push `
+```
+
+    git add .
+    git commit -m "setup gh-pages"
+    git push
+
+```
 
 - Gå til github, man kan nå se gh-pages som en egen branch
 
 - Sjekk at appen er deployet
-  - gå til: http://<ditt-github-navn>.github.io/<repo>
+- gå til: http://<ditt-github-navn>.github.io/<repo>
 
 ## Gjøres sammen
 
@@ -117,3 +124,7 @@ Filtrer ut restauranter kun med rating 0
 ### Oppgave 7 - Legg til mer styling
 
 Forslag ...
+
+```
+
+```
