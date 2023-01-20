@@ -108,15 +108,28 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
 ### Oppgave 1 - Hente inn data fra apiet
 
+1. Skriv fetch funksjon som henter data fra endepunktet "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?poststed=trondheim" og console logge daten
+2. Gjøre det om til en funksjon og bruke useEffect til å hente dataen når siden lastes inn
+3. Lagre datasettet i en useState
+
 ### Oppgave 2 - Vise frem dataen
 
-Hent ut navnet på restaurantene og total karakteren
+1. Mappe gjennom dataen og hente ut navnet og totalkarakteren
+2. Refaktorisere restaurant
 
 ## Redeploye appen
+
+- skriv vite deploy???
 
 ## Gjøres indivduelt
 
 ### Oppgave 3 - Sorter restaurantene på total karakteren
+
+<details><summary>Hint her</summary>
+
+bruk [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+</details>
 
 ### Oppgave 4 - Filtrer dataen
 
