@@ -23,10 +23,19 @@ function Restaurants() {
   }, []);
   console.log(data);
 
+  function getRandom(list) {
+    const random = list[Math.floor(Math.random() * list.length)];
+    console.log(random);
+    return random;
+  }
+
   return (
     <div className="restaurants">
       <h1> Restauranter i Trondheim </h1>
       <div className="retaurants-wrapper">
+        <button className="random-button" onClick={() => getRandom(data)}>
+          random restaurant
+        </button>
         {data.length > 0 && (
           <>
             {data

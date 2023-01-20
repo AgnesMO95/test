@@ -125,19 +125,60 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
 ### Oppgave 3 - Sorter restaurantene på total karakteren
 
-<details><summary>Hint her</summary>
+<details><summary>Hint</summary>
 
-bruk [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+Bruk [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+</details>
+
+<details><summary>LF</summary>
+
+```Javascript
+    {data
+        .sort((a, b) => a.total_karakter - b.total_karakter)
+        .map((restaurant, index) => (
+        <Restaurant key={index} restaurant={restaurant}></Restaurant>
+        ))}
+```
 
 </details>
 
 ### Oppgave 4 - Filtrer dataen
 
-Filtrer ut restauranter kun med rating 0
+#### Vanskelihetsgrad 1:
+
+Filtrer ut restauranter med en type karakter
+
+<details><summary>Hint</summary>
+
+Bruk [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+</details>
+
+<details><summary>LF</summary>
+
+```Javascript
+    .filter((restaurant) => restaurant.total_karakter === "3")
+```
+
+</details>
+
+#### Vanskelihetsgrad 2:
+
+Lag en filter meny som lar deg hente ut Restauranter med en eller flere karakterer. F.eks karakter 0, eller med karekter 0 og 1
 
 ### Oppgave 5 - Bruk slice
 
 ### Oppgave 6 - Finn random restaurant
+
+```Javascript
+
+  function getRandom(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  console.log(getRandom(data));
+```
 
 ### Oppgave 7 - Legg til mer styling
 
