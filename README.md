@@ -2,7 +2,7 @@
 
 ## Workshop
 
-Hva trenger man på forhånd? Node, npm/yarn, git, og Github bruker
+Hva trenger man på forhånd: Node, npm/yarn, git, og Github bruker
 
 ### Web app
 
