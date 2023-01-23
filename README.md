@@ -197,7 +197,7 @@ Bruk [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/G
 
 </details>
 
-### Oppgave 6 - Finn random restaurant
+### Oppgave 6 - Finn en random restaurant
 
 <details><summary>Hint 1</summary>
 
@@ -232,6 +232,44 @@ Bruk verdien veriden for å hente ut restauranten på indeksen tilsvarende den r
   }
 
   console.log(getRandomRestaurants(restaurants));
+```
+
+</details>
+
+Lag en knapp som henter den randome restauranten når man klikker på den
+
+Vis restauranten hvis man har trykket på knappen
+
+<details><summary>Hint </summary>
+
+Lagre restauranten i en local variabel, og vis informasjonen du ønsker hvis knappen er klikket
+
+</details>
+
+<details><summary>LF</summary>
+
+```Javascript
+
+  const [randomRestaurant, setRandomRestaurant] = useState({});
+
+  function getRandomRestaurant(restaurants) {
+    setRandomRestaurant(
+      restaurants[Math.floor(Math.random() * restaurants.length)]
+    );
+  }
+
+    //i return
+  <button
+    className="random-button"
+    onClick={() => getRandomRestaurant(restaurants)}
+    >
+        random restaurant
+    </button>
+    {randomRestaurant && (
+        <>
+            <h1>{randomRestaurant.navn}</h1>
+        </>
+    )}
 ```
 
 </details>

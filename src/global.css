@@ -39,6 +39,10 @@ p {
   margin-top: 0;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /* Styling for class names*/
 .app {
   margin: 5vh 3vw;
