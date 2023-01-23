@@ -9,7 +9,7 @@ Hva trenger man på forhånd? Node, npm/yarn, git, og Github bruker
 Vi skal lage et prosjekt hvor vi tar inn data fra et åpent Api, og deploye siden.
 Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres total karakter.
 
-- Gå til en mappe du ønsker å legge prosjektet i og lag en tom mappe
+- Naviger til ønsket sted å legge prosjektet, eventuelt lag en ny mappe hvor man kan legge workshops man er med på og naviger inn i mappen
 
   Eksempel: `mkdir restauranter`
 
@@ -21,12 +21,14 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
 - Kjør opp appen med:
 
-  - cd restaurantraitings
+  - naviger inn i prosjektet: `cd restaurantraitings`
   - installer dependencies
 
     npm: `npm install`
 
     yarn: `yarn`
+
+  - Åpne prosjektet i deres code editor
 
   - kjør appen i dev miljø og åpne localhost linken
 
@@ -35,6 +37,8 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
     yarn: `yarn dev`
 
   - Slett innholdet i App.jsx og skriv en enkel hello world
+  - Slett index.css og app.css, og slett importene i main.jsx og app.jsx
+  - Kopier global.css fra
 
 ### Push appen med git
 
@@ -74,14 +78,14 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
   npm: `npm install gh-pages --save-dev`
 
-  yarn. `yarn add -D gh-pages`
+  yarn: `yarn add -D gh-pages`
 
 - I package.json legg til:
 
   øverst i filen: => vil være Url'en til nettsiden
 
   ```json
-    "homepage": "http://<ditt-github-navn>.github.io/<repo>"
+    "homepage": "http://<ditt-github-navn>.github.io/<repo>,"
   ```
 
   I script taggen under "dev":
@@ -90,6 +94,12 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
       "predeploy": "npm run build",
       "deploy": "gh-pages -d dist",
   ```
+
+- Kjør:
+
+  npm: `npm run deploy`
+
+  yarn: `yarn deploy`
 
 - Legg til endringer, commit og push
 
@@ -119,7 +129,11 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
 ## Redeploye appen
 
-- skriv vite deploy???
+- Kjør:
+
+  npm: `npm run deploy`
+
+  yarn: `yarn deploy`
 
 ## Gjøres indivduelt
 
@@ -127,14 +141,14 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
 <details><summary>Hint</summary>
 
-Bruk [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+Bruk [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) funksjonen
 
 </details>
 
 <details><summary>LF</summary>
 
 ```Javascript
-    {data
+    {restaurants
         .sort((a, b) => a.total_karakter - b.total_karakter)
         .map((restaurant, index) => (
         <Restaurant key={index} restaurant={restaurant}></Restaurant>
@@ -151,7 +165,7 @@ Filtrer ut restauranter med en type karakter
 
 <details><summary>Hint</summary>
 
-Bruk [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+Bruk [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) funksjonen
 
 </details>
 
@@ -167,19 +181,59 @@ Bruk [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 Lag en filter meny som lar deg hente ut Restauranter med en eller flere karakterer. F.eks karakter 0, eller med karekter 0 og 1
 
-### Oppgave 5 - Bruk slice
+### Oppgave 5 - Hent ut 5 første restaurantene
+
+<details><summary>Hint</summary>
+
+Bruk [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) funksjonen
+
+</details>
+
+<details><summary>LF</summary>
+
+```Javascript
+    restaurants.slice(0, 5)
+```
+
+</details>
 
 ### Oppgave 6 - Finn random restaurant
 
+<details><summary>Hint 1</summary>
+
+Bruk [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) funksjonen, som gir et random tall mellom 0 og 1
+
+</details>
+
+<details><summary>Hint 2</summary>
+
+Bruk lengden av restaurant listen som max verdi, for å få en verdi mellom 0 og lengden av restaurant listen
+
+</details>
+
+<details><summary>Hint 3</summary>
+
+Bruk Math.floor() for å ikke få desimaler
+
+</details>
+
+<details><summary>Hint 3</summary>
+
+Bruk verdien veriden for å hente ut restauranten på indeksen tilsvarende den randome veriden
+
+</details>
+
+<details><summary>LF</summary>
+
 ```Javascript
 
-  function getRandom(list) {
-    return list[Math.floor(Math.random() * list.length)];
+  function getRandomRestaurants(restaurants) {
+    return restaurants[Math.floor(Math.random() * restaurants.length)];
   }
 
-  console.log(getRandom(data));
+  console.log(getRandomRestaurants(restaurants));
 ```
 
-### Oppgave 7 - Legg til mer styling
+</details>
 
-Forslag ...
+### Oppgave 7 - Legg til mer styling

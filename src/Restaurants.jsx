@@ -6,7 +6,6 @@ function Restaurants() {
 
   var requestOptions = {
     method: "GET",
-    //redirect: "follow",
   };
   const fetchRestaurantData = () => {
     fetch(
