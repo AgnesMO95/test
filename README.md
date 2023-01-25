@@ -51,7 +51,7 @@ Før vi går videre så skal vi hente inn litt styling og slette den eksisterene
 CSS filer er et språk man bruker til å style nettsider
 
 - Slett index.css og slett importene i main.jsx
-- slett innholdet i app.css og kopier innholdet i app.css fra
+- slett innholdet i app.css og kopier innholdet i app.css fra bredvid.no/ivdagene
 
 ### Push appen med git
 
