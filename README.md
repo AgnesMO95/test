@@ -6,18 +6,28 @@ Hva trenger man på forhånd: Node, npm/yarn, git, og Github bruker
 
 ### Web app
 
-Vi skal lage et prosjekt hvor vi tar inn data fra et åpent Api, og deploye siden.
-Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres total karakter.
+Hvor mange av dere har deployet en nettside før? Er det noen som har sendt localhost linken til en annen. De fleste av dere har sikkert jobbet med skoleprosjekten, og kjørt det lokalt men ikke tatt det lenger. I dag skal vi lære hvordan man kan gjøre en nettside synlige for andre, med andre ord deploye den. Slik at dere kan sende URL'en/nettsiden mamma eller noen andre som lurer på hva dere driver med
 
-- Naviger til ønsket sted å legge prosjektet, eventuelt lag en ny mappe hvor man kan legge workshops man er med på og naviger inn i mappen
+Vi skal lage en REACT applikasjon som henter inn restauranter i trondheim fra mattilsynets åpne api, og deploye nettsiden. Vi henter også ut karakteren til restauranten, så dere kan se hvor i trondheim det er trygt å spise, og hvor dere kanskje burde unngå..
 
-  Eksempel: `mkdir restauranter`
+Da starter vi med å åpne terminalen og navigere oss til en mappe der vi ønsker å legge prosjektet. Man kan også eventuelt lage en ny mappe, jeg for eksempel vil gjerne lage en mappe som heter workshops hvor jeg kan legge prosjektet så da skriver jeg mkdir som betyr lag en mappe:
+
+Eksempel: `mkdir workshops`
+
+Navigerer så inn i mappen `cd workshops`
+
+Så skal vi opprette prosjeketet. Dette gjør vi ved bruk av vite, som er et utviklingsmiljø som forenkler rett og slett utviklingen av et prosjekt. Mange har kanskje opprettet et prosjekt med create react app for å sette opp en react app, vite gjør det samme, men er raskere.
 
 - Kjør
 
-  npm: `npm create vite@latest restaurantraitings -- --template react`
+  npm: `npm create vite@latest`
 
-  yarn: `yarn create vite restaurantraitings --template react`
+Får da valg om hva prosjektet skal hete
+Forslag?
+
+Hvilket rammeverk - React
+
+Valg om typescript eller javascript, vil anbefale dere å bruke typescript til vanlig da det gjør debugging enklere, men for enkelhetensskyld tar vi javascript i dag.
 
 - Kjør opp appen med:
 
@@ -26,59 +36,71 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
 
     npm: `npm install`
 
-    yarn: `yarn`
+  - Åpne prosjektet i deres code editor. I vs code kan man skrive code ., så vil prosjektet åpnes i vs code i den mappen man står i. Ellrs så kan man åpne prosjektet gjennom code editoren ved å trykke på file, open folder også finne frem til prosjektet.
 
-  - Åpne prosjektet i deres code editor
+#### Paue pass på at alle er samme sted
 
-  - kjør appen i dev miljø og åpne localhost linken
+- kjør deretter appen i dev miljø fra terminalen i code editoren og åpne localhost linken
 
-    npm: `npm run dev`
+  npm: `npm run dev`
 
-    yarn: `yarn dev`
+- Slett innholdet i App.jsx og skriv en enkel hello world
+- Og se at det skjer endringer
 
-  - Slett innholdet i App.jsx og skriv en enkel hello world
-  - Slett index.css og app.css, og slett importene i main.jsx og app.jsx
-  - Kopier global.css fra
+Før vi går videre så skal vi hente inn litt styling og slette den eksisterenede
+CSS filer er et språk man bruker til å style nettsider
+
+- Slett index.css og app.css, og slett importene i main.jsx og app.jsx
+- Kopier global.css fra
 
 ### Push appen med git
 
-- Initier git med:
+Neste steg er å initiere prosjektet med git og pushe det til github. Git er et versjonskontroll system som lar deg administrere og holde styr på kildekodehistorikken din. Github er en skybasert verstjeneste som lar deg administrere git repositories. Git kan man si er et konsept, her er en fin sammenligning konseptet mail, mens github kan sammenlignes med gmail.
+
+- Vi ved å skrive i terminalen:
 
   `git init`
 
-- Legg til alle filene (er mulig å velge hvilke man skal legge til også)
+- Legg til alle filene (er mulig å velge hvilke man skal legge til også) Git add legger til nye eller endrede filer til det som kalles staging area i git og gjør dem klare til å commites. Skriver da
 
   `git add .`
+
+  for å legge til alle filer. Man kan også velge enkelte filer, men nå ønsker vi å legge til alt .
 
 - Commit endringene
 
   `git commit -m "initial commit"`
 
 - Gå til github og lag repo, kan kalle repoet det samme som prosjektet (navnet på repoet vil også være med i Url'en når vi deployer med Github pages)
+- Bruk https og ikke ssh
 - Kopier linken og gå tilbake til terminalen og skriv inn:
 
   `git remote add origin <link>`
 
-- Set hovedbranchen til main og push comitten til github
+- Vi må så sette hovedbranchen til main og push comitten til github
 
   ```
     git branch -M main
     git push -u origin main
   ```
 
+- Sjekk at alle er med og får til å koble seg opp mot github
 - Oppdater git og se at koden ligger der
 
+#### Pause sjekke at alle er med!
+
 ### Github pages
+
+(kopier reponavnet)
+Neste steg er å gjøre klar til å deploye appen med github pages, her er det endel steg vi som må gjennom, før vi kan leke oss med å hente data og lage litt funksjonalitet
 
 - I vite.config.js legg til:
 
   `base "/<repo>/"`
 
-- Installer dependencies (-save-dev/-D betyr at det er en development dependency som hjelper til med utviklingen)
+- Installer dependencies
 
-  npm: `npm install gh-pages --save-dev`
-
-  yarn: `yarn add -D gh-pages`
+  npm: `npm install gh-pages`
 
 - I package.json legg til:
 
@@ -95,12 +117,6 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
       "deploy": "gh-pages -d dist",
   ```
 
-- Kjør:
-
-  npm: `npm run deploy`
-
-  yarn: `yarn deploy`
-
 - Legg til endringer, commit og push
 
   ```
@@ -109,31 +125,84 @@ Vi skal ta inn mattilsynets Api og hente inn resturanter i Trondheim og deres to
     git push
   ```
 
-- Gå til github, man kan nå se gh-pages som en egen branch
-
-- Sjekk at appen er deployet
-- gå til: http://<ditt-github-navn>.github.io/<repo>
-
-## Gjøres sammen
-
-### Oppgave 1 - Hente inn data fra apiet
-
-1. Skriv fetch funksjon som henter data fra endepunktet "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?poststed=trondheim" og console logge daten
-2. Gjøre det om til en funksjon og bruke useEffect til å hente dataen når siden lastes inn
-3. Lagre datasettet i en useState
-
-### Oppgave 2 - Vise frem dataen
-
-1. Mappe gjennom dataen og hente ut navnet og totalkarakteren
-2. Refaktorisere restaurant
-
-## Redeploye appen
-
 - Kjør:
 
   npm: `npm run deploy`
 
-  yarn: `yarn deploy`
+- Gå til github, man kan nå se gh-pages som en egen branch
+
+- Sjekk at appen er deployet, nå mulig å sende linken til andre og de vil få opp det samme
+- gå til: http://<ditt-github-navn>.github.io/<repo>
+
+## Gjøres sammen
+
+Da skal vi gjøre noen oppgaver sammen for å komme igang og hente ut noe data
+
+### Oppgave 1 - Hente inn data fra apiet
+
+1. Skriv fetch funksjon som henter data fra endepunktet "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?poststed=trondheim" og console logge daten, vise at man får ut dataen i consolen i nettleseren
+
+```Javascript
+    fetch(
+      "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?poststed=trondheim"
+    )
+      .then((response) => response.json())
+      .then((result) => console.log(result));
+```
+
+2. Gjøre det om til en funksjon og bruke useEffect til å hente dataen når siden lastes inn
+
+```Javascript
+    const fetchData = () => {
+    fetch(
+      "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?poststed=trondheim"
+    )
+      .then((response) => response.json())
+      .then((result) => setRestaurants(result.entries));
+      .then((error) => console.error("error", error))
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+```
+
+3. Lagre datasettet i en useState (husk å bruke set usestate i fetch data)
+
+```Javascript
+    const [resturants, setRestaurants] = useState();
+```
+
+### Oppgave 2 - Vise frem dataen
+
+Vi ser nå at vi får hentet dataen, men nå vil vi gjerne få vist den på nettsiden!
+
+1. Mappe gjennom dataen og hente ut navnet og totalkarakteren.
+
+Først skrive inn uten index => få error også fortelle at hvert element må ha en unik key, legger derfor til index, selvom man egentlig burde bruke id
+
+```Javascript
+    <div className="App">
+        <h1>Restauranter i Trondheim</h1>
+        <div className="restaurants-wrapper">
+            {resturants &&
+                resturants.map((restaurant, index) => (
+                <div key={index} className="restaurant">
+                    <h1>{restaurant.navn}</h1>
+                    <h3>{restaurant.total_karakter}</h3>
+                </div>
+                ))}
+        </div>
+    </div>
+```
+
+## Redeploye appen
+
+Vis oppdateringen på local host, men at det ikke er noe endringer der vi har deployet siden så det må vi gjøre
+
+- Kjør:
+
+  npm: `npm run deploy`
 
 ## Gjøres indivduelt
 
